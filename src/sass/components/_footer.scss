@@ -1,0 +1,13 @@
+.footer-container{
+    position: sticky;
+    bottom: 0;
+    background-color: $bg-200;
+    display: flex;
+    justify-content: space-between;
+    p{
+        margin-left: 2rem;
+    }
+    a{
+        color: #FF6600;
+    }
+}

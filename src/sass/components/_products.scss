@@ -1,0 +1,11 @@
+.products{
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(4, 0.5fr);
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". . . . ";
+      margin: 20px;
+}
+

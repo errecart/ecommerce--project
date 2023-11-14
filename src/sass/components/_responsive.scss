@@ -1,0 +1,117 @@
+@media (max-width:1280px) {
+    .cards{
+        width: 14rem;
+        .img{
+            width: 13rem;
+            height: 15rem;
+        }
+    }
+    
+}
+@media (max-width:1024px) {
+    .products{
+        display: grid;
+        grid-template-columns: repeat(3, 0.25fr);
+        grid-template-areas:
+        ". . .";
+    }
+    .cards{
+        width: 18rem;
+        .card-body,
+        .cards-items{
+            text-align: center;
+        }
+    }
+}
+@media (max-width:950px) {
+    .products{
+        display: grid;
+        grid-template-columns: repeat(2, 0.25fr);
+        grid-template-areas:
+        ". .";
+        justify-content: center;
+    }
+    .cards{
+        width: 24rem;
+    }
+    .cart{
+        flex-direction: column;
+        .cart-form{
+            margin-top: 20px;
+        }
+    }
+}
+@media (max-width:840px) {
+    .products{
+        display: grid;
+        grid-template-columns: repeat(1, 0.25fr);
+        grid-template-areas:
+        ".";
+        justify-content: center;
+    }
+
+    .products-details{
+        display: flex;
+        flex-direction: column;
+        .products-details-info{
+            width: 20rem;
+        }
+    }
+}
+@media (max-width:660px) {
+    .products-container{
+        display: grid;
+        align-items: center;
+    }
+    .cart-form {
+
+        input{
+            width: 10rem;
+        }
+    }
+}
+@media (max-width:540px) {
+
+    .header li{
+        font-size: 13px;
+    }
+    .products-detail-img img{
+        width: 18rem;
+        height: 20rem;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+@media (max-width:420px) {
+    .header ul{
+        display: grid;
+        grid-template-columns: 0.25fr 0.25fr 0.25fr;
+        grid-template-rows: 0.25fr 0.25fr;
+        gap: 0px 0px;
+        grid-auto-flow: row;
+        grid-template-areas:
+            ". . ."
+            ". . .";
+    }
+    .cards{
+        width: 18rem;
+    }
+}
+@media (max-width:390px) {
+    .header ul li{
+        font-size: $fontSp;
+    }
+
+    .product ul li{
+        flex-direction: column;
+    }
+    
+    .footer-container p{
+        font-size: 12px;
+    }
+}
+

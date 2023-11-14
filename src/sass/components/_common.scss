@@ -1,0 +1,54 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.app{
+    background-color: $bg-100;
+
+}
+
+#root{
+    background-color: $bg-100;
+    height: 100vh;
+}
+
+ul{
+    list-style: none;
+    margin-left: -2rem;
+}
+
+a{
+    text-decoration: none;
+}
+
+h1{
+    font-family: $fontH1;
+    color: $text-100;
+}
+
+h2{
+    font-family: $fontH2;
+    color: $text-100;
+    font-weight: 700;
+}
+
+
+h3,h5{
+    font-family: $fontH2;
+    color: $text-100;
+    font-weight: 600;
+}
+
+p,ul li,input{
+    font-family: $fontP;
+    color: $text-200;
+}
+
+span,label{
+    font-family: $fontH2;
+    color: $primary-200;
+    font-weight: 600;
+}
+

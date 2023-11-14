@@ -1,0 +1,13 @@
+button{
+    font-family: $fontH2;
+    font-weight: 500;
+    background-color: $accent-100;
+    padding: 2px;
+    width: 5.5rem;
+    border-radius:20px;
+    transition: .5s ease;
+    &:hover{
+        background-color: $accent-200;
+        border: 2px solid $primary-300;
+    }
+}
