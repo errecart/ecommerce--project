@@ -10,14 +10,11 @@ import Form from './form'
 export default function CartContainer() {
   const {cartList, clearCart, removeCart, isInCart, fullPrice} = useCartContext()
   const {cartView} = useState(false)
+  const MySwal = withReactContent(Swal)
 
   const cart = () =>{
     cartView(true)
   }
-
-  const MySwal = withReactContent(Swal)
-  const db = getFirestore()
-  const stockCollection = collection(db, 'productos')
 
   const buy = async() =>{
     const order = {}
@@ -28,22 +25,21 @@ export default function CartContainer() {
         id: prod.id,
         name: prod.name,
         price: prod.price,
-        count: prod.count,
-        stock: prod.stock,
-        brand: prod.brand
+        count: prod.count
       }
     })
     order.total = fullPrice()
 
-
+    const db = getFirestore()
     const querryCart = collection(db, 'orders')
     addDoc(querryCart, order)
     .then(({id}) => console.log(id))
-    .catch(error => MySwal.fire({
+    .catch(MySwal.fire({
       title: <p>error Analyzing the info, please wait a momemnt</p>,
     }))
     .finally(clearCart())
 
+    const stockCollection = collection(db, 'productos')
 
     const newStock = query(
       stockCollection,                  
@@ -53,28 +49,23 @@ export default function CartContainer() {
     const batch = writeBatch(db)
 
     await getDocs(newStock)
-    .then(resp => console.log(resp))
     .then(resp => resp.docs.forEach(res => batch.update(res.ref, {
-        stock: res.data().stock - cartList.findIndex(item => item.id === res.id).count
-    }) ))
-    .catch(error => MySwal.fire({
+        stock: res.data().stock - cartList.find(item => item.id === res.id).count
+    })))
+    .catch( MySwal.fire({
       title: <p>error Analyzing the info, please wait a momemnt</p>,
     }))
-    .finally(MySwal.fire({
-      title: <p>Analyzing your purchase, please wait a moment</p>,
-      didOpen: () => {
-        MySwal.showLoading()
-      },
-    }).then(()=>{
-      return MySwal.fire(<p>Congratulations with your purchase!!</p>)
-    }))
+    .finally(
+       MySwal.fire(<p>Congratulations with your purchase!!</p>)
+    )
 
     batch.commit()
 
   }
 
   return (
-    <div className='cart'>
+    <>
+    <section className='cart'>
       <div className="cart-products">
         {isInCart}
         {cartList.length === 0 ? <span>No Products</span> : 
@@ -106,7 +97,8 @@ export default function CartContainer() {
         <p>Total Price: {fullPrice() || 0}$</p>
         <button className='buy' onClick={buy}>Buy All</button>
       </div>
-    </div>
+    </section>
+    </>
   )
 }
 
